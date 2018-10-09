@@ -4,6 +4,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class Intern  extends RealmObject{
+    @PrimaryKey
     String name;
     String fname;
     Integer age;

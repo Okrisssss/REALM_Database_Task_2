@@ -91,26 +91,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void writeToDB(final String name, final String fname, final Integer age, final String stream, final String hobby) {
         realm.executeTransactionAsync(new Realm.Transaction() {
-                                          @Override
-                                          public void execute(Realm realm) {
-                                              Intern user = realm.createObject(Intern.class);
-                                              user.setName(name);
-                                              user.setFname(fname);
-                                              user.setAge(age);
-                                              user.setStream(stream);
-                                              user.setHobby(hobby);
-                                          }
-                                      }, new Realm.Transaction.OnSuccess() {
-                                          @Override
-                                          public void onSuccess() {
-                                              Toast.makeText(MainActivity.this, "Data has been saved", Toast.LENGTH_SHORT).show();
-                                          }
-                                      }, new Realm.Transaction.OnError() {
-                                          @Override
-                                          public void onError(Throwable error) {
-                                              Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                                          }
-                                      }
+            @Override
+            public void execute(Realm realm) {
+                Intern user = realm.createObject(Intern.class);
+                user.setName(name);
+                user.setFname(fname);
+                user.setAge(age);
+                user.setStream(stream);
+                user.setHobby(hobby);
+                }
+                }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(MainActivity.this, "Data has been saved", Toast.LENGTH_SHORT).show();
+                }
+                }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                }
+                }
         );
     }
 
@@ -126,9 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void searchByName() {
     RealmQuery<Intern> query = realm.where(Intern.class);
-        List<Intern> internList = new List
-    for (String name : internList )
-    query.equalTo("name",intern.getName());
+    query.equalTo(intern.getName(),"name");
     RealmResults<Intern> result = query.findAll();
     dbContent.setText(result.toString());
 
