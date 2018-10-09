@@ -45,25 +45,66 @@
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
         android:layout_below="@+id/edtStream"/>
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/buttonHolder"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtHobby"
-        android:layout_centerInParent="true"
-        android:text="Save data" />
+        android:orientation="horizontal"
+        android:layout_below="@id/edtHobby">
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtHobby"
+            android:layout_alignParentStart="true"
+            android:layout_weight="5"
+            android:text="Save data"
+            />
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtHobby"
+            android:layout_weight="5"
+            android:text="Clear DB" />
 
+        <Button
+            android:id="@+id/btnShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtHobby"
+            android:layout_weight="5"
+            android:text="Show DB" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/dbContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSave"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="210dp"
-        android:gravity="center"
+        android:layout_below="@id/searchView"
         android:text="Database content"
-        android:textColor="@color/colorBlack"/>
+        android:textColor="@color/colorBlack"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/searchView"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:hint="Please enter name"
+        android:layout_below="@id/buttonHolder"/>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dbContent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="23dp"
+        android:layout_toEndOf="@+id/searchView"
+        android:text="Search" />
 
 
 </RelativeLayout>
