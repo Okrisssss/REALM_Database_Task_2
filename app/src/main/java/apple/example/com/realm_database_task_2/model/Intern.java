@@ -73,8 +73,7 @@ public class Intern  extends RealmObject{
         this.hobby = hobby;
     }
 
-    @Override
-    public String toString() {
+    public String getString() {
         return "Intern " +
                 "name=" + name + ' ' +
                 ", fname=" + fname + ' ' +

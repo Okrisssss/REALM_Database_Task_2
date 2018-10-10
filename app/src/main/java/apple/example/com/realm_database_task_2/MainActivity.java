@@ -77,14 +77,17 @@ public class MainActivity extends AppCompatActivity {
     @OnClick({R.id.btnSearch})
     public void btnSearch(View view) {
         Intern searchedIntern = getIntern(searchEditText.getText().toString());
-        dbContent.setText(searchedIntern.toString());
+        if (searchedIntern == null){
+            Toast.makeText(this, "No intern with such name, please try again!", Toast.LENGTH_SHORT).show();
+        } else
+        dbContent.setText(searchedIntern.getString());
     }
 
     public void showDbContent() {
         RealmResults<Intern> personRealmResult = realm.where(Intern.class).findAll();
         String content = "";
         for (Intern intern : personRealmResult) {
-            content += intern.toString();
+            content += intern.getString();
         }
         dbContent.setText(content);
     }
@@ -108,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
                 }, new Realm.Transaction.OnError() {
             @Override
             public void onError(Throwable error) {
-                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show(); }
+                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            }
                 }
         );
     }
