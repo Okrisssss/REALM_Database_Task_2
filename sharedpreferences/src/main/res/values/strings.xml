@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SharedPreferences</string>
+    <string name="data">Data:</string>
+    <string name="save">Save</string>
+    <string name="show">Show</string>
+    <string name="language">Language</string>
+    <string name="chooseLanguage">Please choose your language</string>
+</resources>

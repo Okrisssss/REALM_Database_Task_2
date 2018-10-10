@@ -1,26 +1,17 @@
 package apple.example.com.realm_database_task_2;
 
-import android.app.Application;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
-
-import javax.xml.transform.Result;
-
-import apple.example.com.realm_database_task_2.database.RealmController;
 import apple.example.com.realm_database_task_2.model.Intern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
