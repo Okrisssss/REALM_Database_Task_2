@@ -4,12 +4,34 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class Intern  extends RealmObject{
-    @PrimaryKey
-    String name;
-    String fname;
-    Integer age;
-    String stream;
-    String hobby;
+
+    private int id;
+
+    private String name;
+    private String fname;
+    private Integer age;
+    private String stream;
+    private String hobby;
+
+    public Intern(){
+    }
+
+    public Intern(int id, String name, String fname, Integer age, String stream, String hobby) {
+        this.id = id;
+        this.name = name;
+        this.fname = fname;
+        this.age = age;
+        this.stream = stream;
+        this.hobby = hobby;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

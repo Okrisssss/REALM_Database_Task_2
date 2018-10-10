@@ -1,5 +1,6 @@
 package apple.example.com.realm_database_task_2;
 
+import android.app.Application;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import javax.xml.transform.Result;
+
+import apple.example.com.realm_database_task_2.database.RealmController;
 import apple.example.com.realm_database_task_2.model.Intern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,15 +48,14 @@ public class MainActivity extends AppCompatActivity {
     TextView searchEditText;
 
     Realm realm;
-    Intern intern;
+    //RealmController realmController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        realm = Realm.getDefaultInstance();
         ButterKnife.bind(this);
+        realm = Realm.getDefaultInstance();
     }
 
     @OnClick({R.id.btnSave})
@@ -62,22 +65,19 @@ public class MainActivity extends AppCompatActivity {
                 Integer.parseInt(edtAge.getText().toString().trim()),
                 edtStream.getText().toString().trim(),
                 edtHobby.getText().toString().trim());
-
     }
-
     @OnClick({R.id.btnClear})
     public void btnClear(View view) {
         clearDb();
     }
-
     @OnClick({R.id.btnShow})
     public void btnShow(View view) {
         showDbContent();
     }
-
     @OnClick({R.id.btnSearch})
     public void btnSearch(View view) {
-        searchByName();
+        Intern searchedIntern = getIntern(searchEditText.getText().toString());
+        dbContent.setText(searchedIntern.toString());
     }
 
     public void showDbContent() {
@@ -108,8 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Realm.Transaction.OnError() {
             @Override
             public void onError(Throwable error) {
-                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show(); }
                 }
         );
     }
@@ -124,11 +123,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void searchByName() {
-    RealmQuery<Intern> query = realm.where(Intern.class);
-    query.equalTo(intern.getName(),"name");
-    RealmResults<Intern> result = query.findAll();
-    dbContent.setText(result.toString());
-
+    public Intern getIntern(String name) {
+        return realm.where(Intern.class).equalTo("name", name).findFirst();
     }
 }
