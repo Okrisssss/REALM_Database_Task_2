@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,20 +42,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.btnSave})
-    public void saveData (View view){
-    boolean isInserted = myDB.saveData(edtName.getText().toString(),
-            edtFname.getText().toString(),
-            edtAge.getText().toString());
-    if (isInserted = true){
-        Toast.makeText(this, "Data inserted", Toast.LENGTH_SHORT).show();
-    } else {
-        Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
-    }
+    public void saveData(View view) {
+        boolean isInserted = myDB.saveData(edtName.getText().toString(),
+                edtFname.getText().toString(),
+                edtAge.getText().toString());
+        if (isInserted = true) {
+            Toast.makeText(this, "Data inserted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick({R.id.btnViewAll})
-    public void viewAllData(){
-    List<Intern> interns = myDB.getAllIntern();
-    interns.get(1).
+    public void viewAllData() {
+        List<Intern> interns = myDB.getAllIntern();
+        for (Intern intern : interns) {
+            Log.d("MainActivity", intern.toString());
+        }
     }
 }

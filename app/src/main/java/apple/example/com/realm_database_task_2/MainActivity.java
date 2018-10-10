@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import apple.example.com.realm_database_task_2.database.RealmController;
 import apple.example.com.realm_database_task_2.model.Intern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        realm = Realm.getDefaultInstance();
+        //realm = Realm.getDefaultInstance();
+        realm = RealmController.with(this).getRealm();
+
     }
 
     @OnClick({R.id.btnSave})
