@@ -1,20 +1,14 @@
 package com.example.sql;
-
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.sql.database.DbOpenHelper;
 import com.example.sql.model.Intern;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -52,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
         }
     }
-
     @OnClick({R.id.btnViewAll})
     public void viewAllData() {
         List<Intern> interns = myDB.getAllIntern();
-        for (Intern intern : interns) {
-            Log.d("MainActivity", intern.toString());
+        for (Intern itemIntern : interns) {
+            Log.v("MainActivity", itemIntern.toString());
         }
     }
 }

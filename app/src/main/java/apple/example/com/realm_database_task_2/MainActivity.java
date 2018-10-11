@@ -1,5 +1,4 @@
 package apple.example.com.realm_database_task_2;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import apple.example.com.realm_database_task_2.database.RealmController;
 import apple.example.com.realm_database_task_2.model.Intern;
 import butterknife.BindView;
@@ -39,18 +37,14 @@ public class MainActivity extends AppCompatActivity {
     TextView dbContent;
     @BindView(R.id.searchView)
     TextView searchEditText;
-
     Realm realm;
-    //RealmController realmController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        //realm = Realm.getDefaultInstance();
         realm = RealmController.with(this).getRealm();
-
     }
 
     @OnClick({R.id.btnSave})
@@ -108,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onError(Throwable error) {
                 Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
-                }
+            }
         );
     }
 
