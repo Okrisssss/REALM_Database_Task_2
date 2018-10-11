@@ -73,12 +73,12 @@ public class Intern  extends RealmObject{
     }
 
     public String getString() {
-        return "Intern " +
-                "name=" + name + ' ' +
-                ", fname=" + fname + ' ' +
-                ", age=" + age +
-                ", stream=" + stream + ' ' +
-                ", hobby=" + hobby + ' ' +
+        return "Intern info" +
+                "name=:" + name + ' ' +
+                ", fname:" + fname + ' ' +
+                ", age:" + age +
+                ", stream:" + stream + ' ' +
+                ", hobby:" + hobby + ' ' +
                 '\n';
     }
 }
