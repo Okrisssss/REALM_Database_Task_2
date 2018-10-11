@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onError(Throwable error) {
                 Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
-                }
+            }
         );
     }
 

@@ -30,7 +30,13 @@ public class RealmController {
         }
         return instance;
     }
+<<<<<<< HEAD
     public Realm getRealm(){
+=======
+
+    public Realm getRealm() {
+>>>>>>> 8ec47447c12b119dc19377c97b882a13a42cd4c6
         return realm;
     }
 }
+
