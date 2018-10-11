@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     @OnClick({R.id.btnViewAll})
     public void viewAllData(){
     List<Intern> interns = myDB.getAllIntern();
-    interns.get(1).
+    for (Intern itemIntern : interns){
+        Log.v("MainActivity", itemIntern.toString());
+    }
     }
 }

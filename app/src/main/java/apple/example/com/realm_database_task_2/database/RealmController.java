@@ -30,4 +30,7 @@ public class RealmController {
         }
         return instance;
     }
+    public Realm getRealm(){
+        return realm;
+    }
 }
