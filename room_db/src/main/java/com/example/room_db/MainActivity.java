@@ -1,7 +1,7 @@
 package com.example.room_db;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnSearch;
     @BindView(R.id.dbContent)
     TextView dbContent;
+    AppDatabase db = MyAplication.getInstance().getAppDatabase();
+    InternDAO internDAO = db.internDAO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R.id.btnSave})
     public void saveData(View view) {
-    saveToDb(edtName.getText().toString(), edtFname.getText().toString());
+        saveToDb(edtName.getText().toString(), edtFname.getText().toString());
     }
 
     @OnClick({R.id.btnViewAll})
     public void viewAllData() {
-    viewAllInterns();
+        viewAllInterns();
     }
 
     @OnClick({R.id.btnSearch})
@@ -55,27 +57,23 @@ public class MainActivity extends AppCompatActivity {
         getByNme(edtName.getText().toString());
     }
 
-    public void saveToDb ( String name, String fName){
-        AppDatabase db = MyAplication.getInstance().getAppDatabase();
-        InternDAO internDAO = db.internDAO();
+    public void saveToDb(String name, String fName) {
         Intern intern = new Intern();
+        intern.setName(edtName.getText().toString());
+        intern.setfName(edtFname.getText().toString());
         internDAO.insert(intern);
         Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
     }
 
-    public void viewAllInterns(){
-        AppDatabase db = MyAplication.getInstance().getAppDatabase();
-        InternDAO internDAO = db.internDAO();
+    public void viewAllInterns() {
         List<Intern> interns = internDAO.getAll();
-        for (Intern itemIntern : interns){
-            Log.v("MainActivity", itemIntern.toString());
+        for (Intern itemIntern : interns) {
+            Log.v("MainActivity", itemIntern.getInfo());
         }
     }
 
-    public void getByNme (String name){
-        AppDatabase db = MyAplication.getInstance().getAppDatabase();
-        InternDAO internDAO = db.internDAO();
+    public void getByNme(String name) {
         Intern internByName = internDAO.getByName(name);
-        dbContent.setText(internByName.getName().toString() + " " + internByName.getfName().toString());
+        dbContent.setText(internByName.getInfo());
     }
 }

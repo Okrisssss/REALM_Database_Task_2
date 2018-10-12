@@ -34,4 +34,11 @@ public String fName;
     public void setfName(String fName) {
         this.fName = fName;
     }
+
+    public String getInfo() {
+        return "Intern info" +
+                "name=:" + name + ' ' +
+                ", fname:" + fName +
+                '\n';
+    }
 }

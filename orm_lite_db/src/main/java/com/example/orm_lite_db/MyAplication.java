@@ -2,18 +2,18 @@ package com.example.orm_lite_db;
 
 import android.app.Application;
 
-import com.example.orm_lite_db.database.HelpFactory;
+import com.example.orm_lite_db.model.HelperFactory;
 
 public class MyAplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        HelpFactory.setHelper(getApplicationContext());
+        HelperFactory.setHelper(getApplicationContext());
     }
 
     @Override
     public void onTerminate() {
-        HelpFactory.releaseHelper();
+        HelperFactory.releaseHelper();
         super.onTerminate();
     }
 }

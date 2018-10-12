@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/orm" />
             <option value="$PROJECT_DIR$/orm_lite_db" />
             <option value="$PROJECT_DIR$/room_db" />
             <option value="$PROJECT_DIR$/sharedpreferences" />

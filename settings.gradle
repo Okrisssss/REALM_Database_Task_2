@@ -1,1 +1,1 @@
-include ':app', ':sharedpreferences', ':sql', ':orm_lite_db', ':room_db'
+include ':app', ':sharedpreferences', ':sql', ':orm_lite_db', ':room_db', ':orm'
