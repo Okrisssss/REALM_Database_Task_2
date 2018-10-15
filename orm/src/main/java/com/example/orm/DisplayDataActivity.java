@@ -2,10 +2,9 @@ package com.example.orm;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.SQLException;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,34 +17,39 @@ import com.j256.ormlite.dao.Dao;
 
 import java.util.List;
 
-public class DisplayDataActivity extends AppCompatActivity
-        implements AdapterView.OnItemLongClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class DisplayDataActivity extends AppCompatActivity implements AdapterView.OnItemLongClickListener {
+    @BindView(R.id.listview)
+    ListView listView;
+
     private Database_Helper database_helper = null;
-    private ListView listView;
     private int selectPosition = -1;
     private Dao<Information_Model, Integer> informationDao;
     private List<Information_Model> informationList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_data);
-        listView = (ListView)findViewById(R.id.listview);
+        ButterKnife.bind(this);
+        displayData();
+    }
 
+    public void displayData() {
         try {
-            informationDao =getHelper().getInformationDao();
+            informationDao = getHelper().getInformationDao();
             informationList = informationDao.queryForAll();
-            final LayoutInflater layoutInflater = (LayoutInflater)this.
-                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            final View view = layoutInflater.inflate(R.layout.list_view,listView,false);
-            listView.setAdapter(new InformationArrayAdapter(this,R.layout.
-                    list_view,informationList,informationDao));
-            listView.addHeaderView(view);
+            final LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            final View view = layoutInflater.inflate(R.layout.list_view, listView, false);
+            listView.setAdapter(new InformationArrayAdapter(this, R.layout.list_view, informationList, informationDao));
             listView.setOnItemLongClickListener(this);
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-
     }
+
     private Database_Helper getHelper() {
         if (database_helper == null) {
             database_helper = OpenHelperManager.getHelper(this, Database_Helper.class);
@@ -55,8 +59,7 @@ public class DisplayDataActivity extends AppCompatActivity
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        if(position > 0)
-        {
+        if (position > 0) {
             selectPosition = position - 1;
             showDialog();
         }

@@ -12,7 +12,7 @@ import com.j256.ormlite.table.TableUtils;
 
 public class Database_Helper extends OrmLiteSqliteOpenHelper {
     private static final String DB_NAME = "information.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
     private Dao<Information_Model, Integer> informationDao;
     public Database_Helper(Context context) {
         super(context,DB_NAME, null, DB_VERSION);
