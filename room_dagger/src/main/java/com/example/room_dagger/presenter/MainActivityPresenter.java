@@ -1,12 +1,14 @@
 package com.example.room_dagger.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.room_dagger.model.Intern;
 import com.example.room_dagger.repository.AppDatabase;
 import com.example.room_dagger.view.DataView;
 
-import java.util.List;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivityPresenter {
     Context context;
@@ -27,8 +29,16 @@ public class MainActivityPresenter {
     }
 
     public void getAllUsers() {
-        List<Intern> allInterns = appDatabase.getInternDao().getAll();
-        dataView.onGetAllInternsSuccesfully(allInterns);
+        appDatabase.getInternDao().getAll()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(interns -> {
+                            dataView.onGetAllInternsSuccesfully(interns);
+                        },
+                        throwable -> {
+                            Log.d("TAG", "Error");
+                        });
+
     }
 
     public void getUserByName(String internName) {
