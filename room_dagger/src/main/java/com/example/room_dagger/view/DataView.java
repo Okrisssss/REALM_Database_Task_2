@@ -10,5 +10,4 @@ public interface DataView {
 
     void onInternGetSuccesfully(Intern intern);
 
-    void onError(String message);
 }

@@ -12,6 +12,13 @@ import java.util.List;
 
 @Dao
 public interface InternDao {
+
+    @Query("SELECT * FROM Intern")
+    List<Intern> getAll();
+
+    @Query("SELECT * FROM Intern WHERE name = :name" )
+    Intern getByName(String name);
+
     @Insert
     void insert (Intern intern);
 
@@ -20,10 +27,4 @@ public interface InternDao {
 
     @Delete
     void delete (Intern intern);
-
-    @Query("SELECT * FROM Intern")
-    List<Intern> getAll();
-
-    @Query("SELECT * FROM Intern WHERE name = :name" )
-    Intern getByName(String name);
 }

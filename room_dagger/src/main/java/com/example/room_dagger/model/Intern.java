@@ -2,11 +2,13 @@ package com.example.room_dagger.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity
 public class Intern {
 
     @PrimaryKey(autoGenerate = true)
+    @NonNull
     public long id;
     public String name;
     public String fName;

@@ -1,5 +1,6 @@
-package com.example.room_dagger;
+package com.example.room_dagger.di;
 
+import com.example.room_dagger.MyApplication;
 import com.example.room_dagger.di.components.ApplicationComponent;
 import com.example.room_dagger.di.components.DaggerApplicationComponent;
 import com.example.room_dagger.di.components.DaggerMainComponent;
@@ -33,18 +34,12 @@ public enum Injector {
                     .applicationComponent(applicationComponent)
                     .build();
         }
+        mainComponent.inject(mainActivity);
     }
 
-    public ApplicationComponent getApplicationComponent() {
-        return applicationComponent;
-    }
 
     public void releaseApplicationComponent() {
         applicationComponent = null;
-    }
-
-    public MainComponent getMainComponent() {
-        return mainComponent;
     }
 
     public void releaseMainComponent() {

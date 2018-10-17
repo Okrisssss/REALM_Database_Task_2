@@ -11,6 +11,8 @@ public long id;
 public String name;
 public String fName;
 
+public Intern(){}
+
     public long getId() {
         return id;
     }

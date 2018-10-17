@@ -15,8 +15,6 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class, RepositoryModule.class})
 public interface ApplicationComponent {
 
-    void inject(MyApplication myApplication);
-
     Context context();
 
     AppDatabase appDataBase();
