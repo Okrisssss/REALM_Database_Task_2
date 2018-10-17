@@ -7,11 +7,13 @@ public class Information_Model {
     public int id;
     @DatabaseField(columnName = "name")
     public String name;
+    @DatabaseField(columnName = "email")
     public String email;
 
-    public Information_Model(){
+    public Information_Model() {
     }
-    public Information_Model(final String name, final String email){
+
+    public Information_Model(final String name, final String email) {
         this.name = name;
         this.email = email;
     }

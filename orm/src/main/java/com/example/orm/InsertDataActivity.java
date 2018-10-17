@@ -1,12 +1,12 @@
 package com.example.orm;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.orm.database.DatabaseHelper;
-import com.example.orm.model.InfoModel;
+import com.example.orm.database.Database_Helper;
+import com.example.orm.model.Information_Model;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
@@ -21,8 +21,7 @@ public class InsertDataActivity extends AppCompatActivity {
     EditText addEmail;
     @BindView(R.id.addBtn)
     Button addBtn;
-    private DatabaseHelper database_helper = null;
-
+    private Database_Helper database_helper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +31,32 @@ public class InsertDataActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.addBtn})
-    public void addData(){
-        if(addName.getText().toString().trim().length() > 0 &&
-                addEmail.getText().toString().trim().length() > 0){
-            final InfoModel information_model = new InfoModel();
+    public void addInfo() {
+        if (addName.getText().toString().trim().length() > 0 &&
+                addEmail.getText().toString().trim().length() > 0) {
+            final Information_Model information_model = new Information_Model();
             information_model.name = addName.getText().toString();
             information_model.email = addEmail.getText().toString();
+
             try {
-                final Dao<InfoModel, Integer> informationDao =
+                final Dao<Information_Model, Integer> informationDao =
                         getHelper().getInformationDao();
                 informationDao.create(information_model);
+                reset();
             } catch (java.sql.SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    private void reset() {
+        addName.setText("");
+        addEmail.setText("");
+    }
 
-    private DatabaseHelper getHelper() {
+    private Database_Helper getHelper() {
         if (database_helper == null) {
-            database_helper = OpenHelperManager.getHelper(this,DatabaseHelper.class);
+            database_helper = OpenHelperManager.getHelper(this, Database_Helper.class);
         }
         return database_helper;
     }

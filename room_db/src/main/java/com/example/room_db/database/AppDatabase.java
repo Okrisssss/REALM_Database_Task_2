@@ -3,6 +3,7 @@ package com.example.room_db.database;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
+import com.example.room_db.database.dao.InternDAO;
 import com.example.room_db.model.Intern;
 
 

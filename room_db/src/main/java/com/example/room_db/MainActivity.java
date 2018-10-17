@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.room_db.database.AppDatabase;
-import com.example.room_db.database.InternDAO;
+import com.example.room_db.database.dao.InternDAO;
 import com.example.room_db.model.Intern;
 
 import java.util.List;
