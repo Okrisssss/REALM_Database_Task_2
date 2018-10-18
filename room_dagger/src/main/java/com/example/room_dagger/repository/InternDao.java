@@ -10,13 +10,15 @@ import com.example.room_dagger.model.Intern;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.reactivex.Single;
 
 @Dao
 public interface InternDao {
 
     @Query("SELECT * FROM Intern")
-    Observable<List<Intern> >getAll();
+    Single<List<Intern>> getAll();
 
     @Query("SELECT * FROM Intern WHERE name = :name" )
     Intern getByName(String name);
