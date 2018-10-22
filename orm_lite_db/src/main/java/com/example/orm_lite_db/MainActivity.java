@@ -57,7 +57,4 @@ public class MainActivity extends AppCompatActivity {
         HelperFactory.getHelper(this).getGoalDao().create(g);
         Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
     }
-
-    public void insertdata(){
-    }
 }
